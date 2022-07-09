@@ -30,7 +30,7 @@ public MailController(string emailAdress, string password, string name)
 
 ```
 
-name - Имя(заголовок), которое будет напечатано как название письма
+name - Имя(заголовок), которое будет напечатано как название письма (по умолчанию равно "From MailController")
 
 - методы
 
