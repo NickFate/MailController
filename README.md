@@ -11,7 +11,7 @@ class MailController
 
 ```
 
-- конструктор 
+- конструкторы
 
 ```cs
 
@@ -25,7 +25,26 @@ password - пароль для входа в аккаунт гугл (реком
 
 ```cs
 
-public void SendMessage(string subject, string message)
+public MailController(string emailAdress, string password, string name)
+
+```
+
+name - Имя(заголовок), которое будет напечатано как название письма
+
+- методы
+
+
+```cs
+
+public void SendMessage(string message)
+
+```
+Метод отправляет письмо с телом письма message
+
+
+```cs
+
+public void SendMessage(string message, string subject)
 
 ```
 
