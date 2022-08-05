@@ -16,37 +16,25 @@ class MailController
 
 ```cs
 
-public MailController(string emailAdress, string password)
-
-```
-
-emailAdress - адресс электронной почты для приема и отпраки сообщения
-password - пароль для входа в аккаунт гугл (рекомендуется создать пароль для приложения в Google(Настройки аккаунта -> Безопастность -> Вход в аккаунт Google))
-![image](https://user-images.githubusercontent.com/78916980/178056878-e65f16fe-d0ee-4cab-a881-f99a90877f80.png)
-
-```cs
-
 public MailController(string emailAdress, string password, string name)
 
 ```
 
-name - Имя(заголовок), которое будет напечатано как название письма (по умолчанию равно "From MailController")
+
+emailAdress - адресс электронной почты для приема и отпраки сообщения
+password - пароль для входа в аккаунт гугл (рекомендуется создать пароль для приложения в Google(Настройки аккаунта -> Безопастность -> Вход в аккаунт Google))
+name - Имя(заголовок), которое будет напечатано как название письма
+![image](https://user-images.githubusercontent.com/78916980/178056878-e65f16fe-d0ee-4cab-a881-f99a90877f80.png)
+
+
 
 - методы
 
 
 ```cs
 
-public void SendMessage(string message)
-
-```
-Метод отправляет письмо с телом письма message
-
-
-```cs
-
-public void SendMessage(string message, string subject)
+string receiver, string message, string subject
 
 ```
 
-Метод отправляет письмо с заголовком subject и телом письма message
+Отправка сообщения message c заголовком subject на эл. адрес receiver
