@@ -33,7 +33,7 @@ name - Имя(заголовок), которое будет напечатан�
 
 ```cs
 
-string receiver, string message, string subject
+public void SendMessageTo(string receiver, string message, string subject)
 
 ```
 
