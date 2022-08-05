@@ -12,32 +12,7 @@ namespace MailController
         private SmtpClient client;
         MailMessage message;
 
-
-        /// <summary>
-        /// Класс для отпраки сообщений
-        /// </summary>
-        /// <param name="emailAdress"> - адресс электронной почты (и отправителя, и получателя)</param>
-        /// <param name="password"> - пароль от учетной записи почты</param>
-        public MailController(string emailAdress, string password)
-        {
-            // адрес отправителя, имя(заголовок), которое будет напечатано как название письма
-            MailAddress from = new MailAddress(emailAdress, "From MailController");
-
-            // адрес получателя (в нашем случае адресс отправителя)
-            MailAddress to = new MailAddress(emailAdress);
-
-            // сообщение от "from" к "to" 
-            message = new MailMessage(from, to);
-
-            // клиент для отправки сообщения
-            client = new SmtpClient("smtp.gmail.com", 587);
-            // авторизация
-            client.Credentials = new NetworkCredential(emailAdress, password);
-            // включаем SSL
-            client.EnableSsl = true;
-            
-        }
-
+        MailAddress from;
 
         /// <summary>
         /// Класс для отпраки сообщений
@@ -48,7 +23,7 @@ namespace MailController
         public MailController(string emailAdress, string password, string name)
         {
             // адрес отправителя, имя(заголовок), которое будет напечатано как название письма
-            MailAddress from = new MailAddress(emailAdress, name);
+            from = new MailAddress(emailAdress, name);
 
             // адрес получателя (в нашем случае адресс отправителя)
             MailAddress to = new MailAddress(emailAdress);
@@ -65,39 +40,24 @@ namespace MailController
 
         }
 
-
         /// <summary>
-        /// Отправляет сообщение
+        /// Отправка сообщения message c заголовком subject на эл. адрес receiver
         /// </summary>
-        /// <param name="message">Текст письма</param>
-        /// <param name="subject">Заголовок</param>
-        public void SendMessage(string message, string subject)
+        /// <param name="receiver">адрес получателя</param>
+        /// <param name="message">текст письма</param>
+        /// <param name="subject">заголовк письма</param>
+        public void SendMessageTo(string receiver, string message, string subject)
         {
             // работа с сообщениями 
-            
+            MailAddress Receiver = new MailAddress(receiver);
+            MailMessage Message = new MailMessage(from, Receiver);
             // Тема
-            this.message.Subject = subject;
+            Message.Subject = subject;
             // Тело сообщения
-            this.message.Body = message;
+            Message.Body = message;
 
             // отправляем сообщение
             client.Send(this.message);
         }
-
-        /// <summary>
-        /// Отправляет сообщение
-        /// </summary>
-        /// <param name="message">Текст письма</param>
-        public void SendMessage(string message)
-        {
-            // работа с сообщениями 
-
-            // Тело сообщения
-            this.message.Body = message;
-
-            // отправляем сообщение
-            client.Send(this.message);
-        }
-
     }
 }
