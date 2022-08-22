@@ -57,7 +57,7 @@ namespace MailController
             Message.Body = message;
 
             // отправляем сообщение
-            client.Send(this.message);
+            client.Send(Message);
         }
     }
 }
